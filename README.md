@@ -1,5 +1,4 @@
  
-```markdown
 # MongoDB Cheat Sheet for CRUD Operations
 
 ## Show all databases:
