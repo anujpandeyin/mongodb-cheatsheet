@@ -1,52 +1,83 @@
+ 
+```markdown
+# MongoDB Cheat Sheet for CRUD Operations
 
-CRUD Operations in MongoDB Cheat Sheet: 
+## Show all databases:
+```bash
+show dbs
+```
 
-1.  Create (Insert): 
-   - Insert a document into a collection.
-     ```bash
-     db.collection.insert({ key: value })
-     ```
-     Example:
-     ```bash
-     db.users.insert({ name: "Alice", age: 30, email: "alice@example.com" })
-     ```
+## Switch to a specific database:
+```bash
+use <database_name>
+```
 
-2.  Read (Query): 
-   - Find documents in a collection based on a query.
-     ```bash
-     db.collection.find({ key: value })
-     ```
-     Example:
-     ```bash
-     db.users.find({ name: "Alice" })
-     ```
+## Show all collections in the current database:
+```bash
+show collections
+```
 
-3.  Update: 
-   - Update documents in a collection.
-     ```bash
-     db.collection.update({ key: value }, { $set: { new_key: new_value } })
-     ```
-     Example:
-     ```bash
-     db.users.update({ name: "Alice" }, { $set: { age: 31 } })
-     ```
+## Insert a document into a collection:
+```bash
+db.<collection_name>.insert({ key: value })
+```
+Example:
+```bash
+db.users.insert({ name: "John", age: 25, email: "john@example.com" })
+```
 
-4.  Delete: 
-   - Remove documents from a collection.
-     ```bash
-     db.collection.remove({ key: value })
-     ```
-     Example:
-     ```bash
-     db.users.remove({ name: "Alice" })
-     ```
+## Query documents in a collection:
+```bash
+db.<collection_name>.find({ key: value })
+```
+Example:
+```bash
+db.users.find({ name: "John" })
+```
 
- 5.Drop Database :
- -remove db from mongodb.
- `````
- use mydatabase 
-  
-   Switch to the database you want to drop
+## Update documents in a collection:
+```bash
+db.<collection_name>.update({ key: value }, { $set: { new_key: new_value } })
+```
+Example:
+```bash
+db.users.update({ name: "John" }, { $set: { age: 26 } })
+```
 
+## Remove documents from a collection:
+```bash
+db.<collection_name>.remove({ key: value })
+```
+Example:
+```bash
+db.users.remove({ name: "John" })
+```
+
+## Create an index on a specific field in a collection:
+```bash
+db.<collection_name>.createIndex({ key: 1 })
+```
+Example:
+```bash
+db.users.createIndex({ email: 1 })
+```
+
+## Aggregate data in a collection:
+```bash
+db.<collection_name>.aggregate([ { $group: { _id: "$key", count: { $sum: 1 } } } ])
+```
+
+## Drop a collection:
+```bash
+db.<collection_name>.drop()
+```
+Example:
+```bash
+db.users.drop()
+```
+
+## Drop a database:
+```bash
+use <database_name>  # Switch to the database you want to drop
 db.dropDatabase()
- ```
+```
